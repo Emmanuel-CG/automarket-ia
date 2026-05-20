@@ -12,9 +12,7 @@ categorical = [
     "Brand",
     "Model",
     "Fuel_Type",
-    "Transmission",
-    "City",
-    "Car_Type"
+    "Transmiss"
 ]
 
 encoders = {}
@@ -29,17 +27,15 @@ X = df[
     [
         "Brand",
         "Model",
-        "Year",
+        "Model_Ye",
         "Kilometer",
         "Fuel_Type",
-        "Transmission",
-        "City",
-        "Car_Type"
+        "Transmiss"
     ]
 ]
 
 # precio objetivo
-y = df["Price_MXN"]
+y = df["Price_USD"]
 
 # dividir dataset
 X_train, X_test, y_train, y_test = train_test_split(
@@ -50,7 +46,11 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # modelo IA
-model = RandomForestRegressor()
+model = RandomForestRegressor(
+    n_estimators=50,
+    max_depth=10,
+    random_state=42
+)
 
 # entrenar
 model.fit(X_train, y_train)
