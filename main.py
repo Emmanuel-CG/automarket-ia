@@ -44,6 +44,13 @@ def predict(data: dict):
 
     prediction = model.predict(X)
 
+    price_mxn = int(prediction[0] * 18)
+
+    price_mxn = max(
+        50000,
+        min(price_mxn, 3000000)
+    )
+
     return {
-        "price": int(prediction[0])
+        "price": price_mxn
     }
